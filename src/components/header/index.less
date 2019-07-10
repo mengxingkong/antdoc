@@ -16,7 +16,16 @@
         padding: 0 20px;
         border-top: 1px solid green;
         .breadcrump-title{
-            
+            text-align: center;
+            &:after{
+                position: absolute;
+                content: '';
+                left: 118px;
+                top: 39px;
+                border-top: 9px solid white;
+                border-left: 12px solid transparent;
+                border-right: 12px solid transparent;
+            }
         }
         .weather{
             text-align: right;
