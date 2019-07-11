@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import {Button} from 'antd'
 import './App.css';
+import {Link} from 'react-router-dom'
 import Life from './pages/demo/life.js'
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Button type="primary">Button</Button>
-        <Life></Life>
-      </div>
+      <div>
+        {this.props.children}
+       </div>
     );
   }
 }
