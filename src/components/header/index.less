@@ -4,8 +4,18 @@
     .header-top{
         height: 60px;
         line-height: 60px;
-        padding: 0 20px;
+        padding: 0 20px; 
         text-align: right;
+        .logo{ 
+            line-height: 60px;
+            text-align: left;
+            font-size: 18px;
+            img{
+                height: 40px;
+                vertical-align: middle;
+
+            }
+        }
         a{
             margin-left: 40px;
         }
@@ -42,3 +52,16 @@
         } 
     }
 }
+
+// common 页面简单头
+.simple-page{
+    .header-top{
+      background:#1890ff;
+      color:@colorM;
+    }
+    .ant-form,
+    .ant-col-12,
+    .weather{
+      display:none;
+    }
+  }
