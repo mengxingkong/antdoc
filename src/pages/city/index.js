@@ -26,7 +26,8 @@ export default class City extends React.Component{
             data:{
                 params:{
                     page:this.params.page
-                }
+                },
+                isMock:true
             }
         }).then((res)=>{
             this.setState({

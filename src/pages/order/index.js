@@ -2,6 +2,8 @@ import React from 'react';
 import { Card, Button, Table, Form, Select, message, Modal, DatePicker} from 'antd';
 import axios from './../../axios/index';
 import utils from './../../utils/utils';
+import BaseForm from './../../components/baseForm'
+import ETabel from './../../components/eTabel'
 const FormItem = Form.Item;
 const Option = Select.Option;
 export default class Order extends React.Component{
@@ -15,32 +17,93 @@ export default class Order extends React.Component{
         page:1
     } 
 
+    formList = [
+        {
+            type:'SELECT',
+            label:"城市",
+            field:'city',
+            placeholder:'全部',
+            initialValue:'1',
+            width:100,
+            list:[
+                {
+                    id:'0',name:'全部'
+                },
+                {
+                    id:'1',name:'北京'
+                },
+                {
+                    id:'2',name:'太原'
+                },
+                {
+                    id:'3',name:'临汾'
+                }
+            ]
+        },
+        {
+            type:'INPUT',
+            label:"模式",
+            field:'mode',
+            placeholder:'请输入模式',
+            width:100
+        },
+        {
+            type:'时间查询',
+            field:''
+        },
+        {
+            type:'SELECT',
+            label:"订单状态",
+            field:'order_status',
+            placeholder:'全部',
+            initialValue:'1',
+            width:100,
+            list:[
+                {
+                    id:'0',name:'全部'
+                },
+                {
+                    id:'1',name:'进行中'
+                },
+                {
+                    id:'2',name:'结束行程'
+                }
+            ]
+        }
+    ]
+
     componentDidMount(){
         this.requestList()
+    }
+    handleFilter =(params)=>{
+        this.params = params;
+        debugger;
+        this.requestList();
     }
 
     // 默认请求我们的接口数据
     requestList = ()=>{
-        let _this = this;
-        axios.ajax({
-            url:"/order/list",
-            data:{
-                params:{
-                    page:this.params.page
-                }
-            }
-        }).then((res)=>{
-            this.setState({
-                list: res.data.result.item_list.map((item,index)=>{
-                    item.key = index;
-                    return item;
-                }),
-                pagination:utils.pagination(res,(current)=>{
-                    _this.params.page = current;
-                    _this.requestList();
-                })
-            })
-        })
+        axios.requestList(this,"/order/list",this.params,true)
+        // axios.ajax({
+        //     url:"/order/list",
+        //     data:{
+        //         params:{
+        //             page:this.params
+        //         }
+        //     }
+        // }).then((res)=>{
+        //     let list = res.data.result.item_list.map((item,index)=>{
+        //         item.key = index;
+        //         return item;
+        //     });
+        //     this.setState({
+        //         list,
+        //         pagination:utils.pagination(res,(current)=>{
+        //             _this.params.page = current;
+        //             _this.requestList();
+        //         })
+        //     })
+        // })
     }
 
     handleConfirm = () => {
@@ -87,13 +150,13 @@ export default class Order extends React.Component{
         })
     }
 
-    onRowClick = (record, index) => {
-        let selectKey = [index];
-        this.setState({
-            selectedRowKeys:selectKey,
-            selectedItem:record
-        })
-    }
+    // onRowClick = (record, index) => {
+    //     let selectKey = [index];
+    //     this.setState({
+    //         selectedRowKeys:selectKey,
+    //         selectedItem:record
+    //     })
+    // }
 
     openOrderDetail = ()=>{
         let item = this.state.selectedItem;
@@ -104,8 +167,9 @@ export default class Order extends React.Component{
             })
             return;
         }
-        window.open(`/#/common/order/detail/${item.id}`,"_blank")
+        window.open(`/#/common/order/detail/${item.order_sn}`,"_blank")
     }
+
 
     render(){
         const columns = [
@@ -169,14 +233,23 @@ export default class Order extends React.Component{
         return(
             <div>
                 <Card>
-                    <FilterForm />
+                    <BaseForm formList={this.formList} filterSubmit={this.handleFilter}/>
+                    {/* <FilterForm /> */}
                 </Card>
                 <Card style={{marginTop:10}}>
                         <Button type="primary" onClick={this.openOrderDetail}>订单详情</Button>
                         <Button type="primary" style={{marginLeft:10}} onClick={this.handleConfirm}>结束订单</Button>
-                    </Card>
+                </Card>
                     <div className="content-wrap">
-                        <Table 
+                        <ETabel 
+                            updateSelectedItem={utils.updateSelectedItem.bind(this)}
+                            columns={columns}
+                            dataSource={this.state.list}
+                            pagination={this.state.pagination}
+                            rowSelection={rowSelection}
+                            selectedRowKeys={this.state.selectedRowKeys}
+                        />
+                        {/* <Table 
                             bordered
                             columns={columns}
                             dataSource={this.state.list}
@@ -189,7 +262,7 @@ export default class Order extends React.Component{
                                      },
                                 }
                             }}
-                        />
+                        /> */}
                     </div>
                     <Modal 
                         title="结束订单"
@@ -260,7 +333,7 @@ class FilterForm extends React.Component{
                 </FormItem>
                 <FormItem label="订单状态">
                     {
-                        getFieldDecorator('auth_status')(
+                        getFieldDecorator('order_status')(
                             <Select
                                 style={{ width: 100 }}
                                 placeholder="全部"

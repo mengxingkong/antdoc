@@ -7,9 +7,16 @@ import Admin from './admin.js'
 // import Home from './pages//router-demo/router2/home'
 import IRoute from './pages/router-demo/router3/router'
 import IRouter from './router'
+import {Provider} from 'react-redux'
+import configStore from './redux/store/configStore'
 import * as serviceWorker from './serviceWorker';
-
-ReactDOM.render(<IRouter />, document.getElementById('root'));
+const store = configStore();
+ReactDOM.render(
+    <Provider store={store}>
+        <IRouter />
+    </Provider>, 
+    document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

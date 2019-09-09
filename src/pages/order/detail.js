@@ -20,7 +20,8 @@ export default class Detail extends React.Component{
             data:{
                 params:{
                     orderId: orderId
-                }
+                },
+                isMock:true
             }
         }).then((res)=>{
             if(res.data.code === '0'){

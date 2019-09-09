@@ -82,10 +82,12 @@ export default class  BasicTable extends React.Component{
                params:{
                    page:this.params.page
                },
+               isMock:true,
                showLoading:true
            }
        }).then((res)=>{
             if(res.data.code == '0'){
+                debugger;
                 res.data.result.list.map((item, index)=>{
                     item.key = index;
                 });
