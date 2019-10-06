@@ -1,5 +1,6 @@
 import React from 'react'
-import MenuConfig from '../../config/menuConfig'
+// import MenuConfig from '../../config/menuConfig'
+import MenuConfig from '../../config/project_menuConfig'
 import {Menu,Icon} from 'antd'
 import {connect} from 'react-redux'
 import {switchMenu} from './../../redux/action/index'
@@ -50,8 +51,7 @@ class Navleft extends React.Component{
         return(
             <div>
                 <div className="logo">
-                    <img src="/assets/logo-ant.svg" alt=""/>
-                    <h1>Imooc MS</h1>
+                    <h1>network project</h1>
                 </div>
                 <Menu
                     onClick={this.handleClick}

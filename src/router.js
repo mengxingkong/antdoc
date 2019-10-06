@@ -28,6 +28,10 @@ import Pie from './pages/echarts/pie'
 import Line from './pages/echarts/line'
 import RichText from './pages/rich'
 import PermissionUser from './pages/permission'
+import Instruct from './pages/network/instruct'
+import Degree from './pages/network/degree'
+import Distance from './pages/network/distance'
+import Coreness from './pages/network/coreness'
 export default class IRouter extends React.Component{
 
     render(){
@@ -57,13 +61,13 @@ export default class IRouter extends React.Component{
                                     <Route  path="/form/reg" component={FormRegister} />
                                     <Route  path="/table/basic" component={BasicTable} />
                                     <Route  path="/table/high" component={HighTable} />   
-                                    <Route  path="/city" component={City} />   
-                                    <Route  path="/order" component={Order} />                                
-                                    <Route  path="/user" component={User} />  
+                                    <Route  path="/degree" component={Degree} />   
+                                    <Route  path="/distance" component={Distance} />                                
+                                    <Route  path="/coreness" component={Coreness} />  
                                     <Route  path="/charts/bar" component={Bar} />     
                                     <Route  path="/charts/pie" component={Pie} />                                
                                     <Route  path="/charts/line" component={Line} />     
-                                    <Route  path="/rich" component={RichText} />      
+                                    <Route  path="/instruct" component={Instruct} />      
                                     <Route  path="/permission" component={PermissionUser} />    
                                     <Redirect to="/home" />                            
                                     <Route  component={NoMatch} /> 
