@@ -24,6 +24,7 @@ export default class Instruct extends React.Component{
                 this.setState({
                     link:data
                 })
+                // console.log(data)
         })
         fetch("/data/net_node_degree.json")
             .then(res => res.json())
@@ -31,6 +32,7 @@ export default class Instruct extends React.Component{
                 this.setState({
                     node:data
                 })
+                console.log(data)
         })
     }
 
