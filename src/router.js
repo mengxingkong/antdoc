@@ -32,6 +32,8 @@ import Instruct from './pages/network/instruct'
 import Degree from './pages/network/degree'
 import Distance from './pages/network/distance'
 import Coreness from './pages/network/coreness'
+import Attack from './pages/network/attack'
+import Cluster from './pages/network/cluster'
 export default class IRouter extends React.Component{
 
     render(){
@@ -48,7 +50,7 @@ export default class IRouter extends React.Component{
                         <Route path="/" render={()=>
                             <Admin>
                                 < Switch>
-                                    <Route  path="/ui/buttons" component={Home}  />
+                                    <Route  path="/ui/home" component={Home}  />
                                     <Route  path="/ui/buttons" component={Buttons} />
                                     <Route  path="/ui/modals" component={Modals} />
                                     <Route  path="/ui/loadings" component={Loadings} />
@@ -58,9 +60,9 @@ export default class IRouter extends React.Component{
                                     <Route  path="/ui/gallery" component={Gallery} />
                                     <Route  path="/ui/carousel" component={Carousels} />
                                     <Route  path="/form/login" component={FormLogin} />
-                                    <Route  path="/form/reg" component={FormRegister} />
+                                    <Route  path="/cluster" component={Cluster} />
                                     <Route  path="/table/basic" component={BasicTable} />
-                                    <Route  path="/table/high" component={HighTable} />   
+                                    <Route  path="/attack" component={Attack} />   
                                     <Route  path="/degree" component={Degree} />   
                                     <Route  path="/distance" component={Distance} />                                
                                     <Route  path="/coreness" component={Coreness} />  
