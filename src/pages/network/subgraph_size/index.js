@@ -10,41 +10,43 @@ import 'echarts/lib/component/title'
 import 'echarts/lib/component/legend'
 import 'echarts/lib/component/markPoint'
 import ReactEcharts from 'echarts-for-react'
-export default class Coreness extends React.Component{
+export default class Subgraph_size extends React.Component{
 
     state = {}
 
     componentWillMount(){
         // 主题需要提前注入
         echarts.registerTheme('mxkstar', echartTheme);
-        fetch("/data/coreness/coreness_distribution.json")
+        fetch("/data/attack/subgraph_size.json")
             .then(res => res.json())
             .then( (data) => {
                 this.setState({
-                    x:data['x'],
-                    y:data['y']
+                    x_data:data["x"],
+                    y:data["y"]
                 })
+                // console.log(this.state.x_data)
+                console.log(data["y"])
             })
     }
 
     getOptions = ()=>{
         let option = {
            title:{
-               text:'coreness分布',
+               text:'根据攻击比例改变的最大连通子图大小',
            },
            tooltip:{
                 trigger:'axis'
            },
            xAxis:{
                type:'category',
-               data:this.state.x
+               data:this.state.x_data 
            },
            yAxis:{
                 type:'value'
            },
            series:[
                 {
-                    name:'N(C)/N',
+                    name:'N(k)/N',
                     type:'line',
                     data:this.state.y
                 }
@@ -53,15 +55,13 @@ export default class Coreness extends React.Component{
         return option;
     }
 
-
     render(){
         return(
             <div>
-                 <Card title="coreness 分布">
+                <Card title="最大连通子图大小">
                     <ReactEcharts option={this.getOptions()} theme="mxkstar" style={{height:500}} />
                 </Card>
-
-                {/* <Card title="Coreness 分布" className="card-wrap">
+                {/* <Card title="网络节点度分布" className="card-wrap">
                     <img src="/network_img/degree_distribution.png" style={{width:'80%'}}/>
                 </Card> */}
             </div>

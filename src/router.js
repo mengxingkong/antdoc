@@ -34,6 +34,7 @@ import Distance from './pages/network/distance'
 import Coreness from './pages/network/coreness'
 import Attack from './pages/network/attack'
 import Cluster from './pages/network/cluster'
+import Subgraph_size from './pages/network/subgraph_size'
 export default class IRouter extends React.Component{
 
     render(){
@@ -65,7 +66,8 @@ export default class IRouter extends React.Component{
                                     <Route  path="/attack" component={Attack} />   
                                     <Route  path="/degree" component={Degree} />   
                                     <Route  path="/distance" component={Distance} />                                
-                                    <Route  path="/coreness" component={Coreness} />  
+                                    <Route  path="/coreness" component={Coreness} /> 
+                                    <Route  path="/subgraph_size" component={Subgraph_size} />
                                     <Route  path="/charts/bar" component={Bar} />     
                                     <Route  path="/charts/pie" component={Pie} />                                
                                     <Route  path="/charts/line" component={Line} />     

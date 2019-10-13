@@ -4,7 +4,7 @@ const MenuConfig = [
         key:'/instruct'
     },
     {
-        title:'度分布',
+        title:'degree',
         key:'/degree'
     },
     {
@@ -22,6 +22,10 @@ const MenuConfig = [
     {
         title:'attack',
         key:'/attack'
+    },
+    {
+        title:'subgraph_size',
+        key:'/subgraph_size'
     }
 ]
 export default MenuConfig;
