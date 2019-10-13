@@ -26,6 +26,10 @@ const MenuConfig = [
     {
         title:'subgraph_size',
         key:'/subgraph_size'
+    },
+    {
+        title:'submap_counts',
+        key:'/submap'
     }
 ]
 export default MenuConfig;

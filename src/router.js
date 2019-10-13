@@ -35,6 +35,7 @@ import Coreness from './pages/network/coreness'
 import Attack from './pages/network/attack'
 import Cluster from './pages/network/cluster'
 import Subgraph_size from './pages/network/subgraph_size'
+import Submap from './pages/network/submap'
 export default class IRouter extends React.Component{
 
     render(){
@@ -62,7 +63,7 @@ export default class IRouter extends React.Component{
                                     <Route  path="/ui/carousel" component={Carousels} />
                                     <Route  path="/form/login" component={FormLogin} />
                                     <Route  path="/cluster" component={Cluster} />
-                                    <Route  path="/table/basic" component={BasicTable} />
+                                    <Route  path="/submap" component={Submap} />
                                     <Route  path="/attack" component={Attack} />   
                                     <Route  path="/degree" component={Degree} />   
                                     <Route  path="/distance" component={Distance} />                                

@@ -145,6 +145,8 @@ export default class Attack extends React.Component{
         return(
             <div>
                 <Card title="删除节点" className="card-wrap">
+                    <Button type="primary" value="0.001" onClick={() => this.getLocalJson(0.001)}>0.001</Button>
+                    <Button type="primary" value="0.01" onClick={() => this.getLocalJson(0.01)}>0.01</Button>
                     <Button type="primary" value="0.1" onClick={() => this.getLocalJson(0.1)}>0.1</Button>
                     <Button type="primary" value="0.2" onClick={() => this.getLocalJson(0.2)}>0.2</Button>
                     <Button type="primary" value="0.3" onClick={() => this.getLocalJson(0.3)}>0.3</Button>
